@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smoke & Dre Grille</title>
+
+<style>
+  :root{
+    --bg:#111111;
+    --panel:#1c1c1c;
+    --accent:#00a6b2;
+    --text:#ffffff;
+    --muted:#b8b8b8;
+    --border:#333333;
+  }
+
+  body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+  }
+
+  .container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+  }
+
+  .hero{
+    text-align:center;
+    padding:40px 16px 10px;
+  }
+
+  .hero img{
+    width:140px;
+    height:auto;
+    margin-bottom:18px;
+  }
+
+  .hero h1{
+    font-size:40px;
+    margin:0;
+    letter-spacing:0.5px;
+  }
+
+  .hero p{
+    color:var(--accent);
+    font-size:18px;
+    margin:12px 0 0;
+    line-height:1.3;
+  }
+
+  .cta-row{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:20px;
+  }
+
+  .button{
+    display:inline-block;
+    padding:14px 22px;
+    background:var(--accent);
+    color:var(--text);
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:10px;
+  }
+
+  .button.secondary{
+    background:transparent;
+    border:1px solid var(--accent);
+    color:var(--text);
+  }
+
+  .section{
+    margin-top:54px;
+  }
+
+  .section h2{
+    text-align:center;
+    font-size:28px;
+    margin:0 0 22px;
+  }
+
+  .sub{
+    text-align:center;
+    color:var(--muted);
+    margin:-10px 0 20px;
+  }
+
+  .food-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  @media (min-width: 760px){
+    .food-grid{ grid-template-columns:1fr 1fr; }
+  }
+
+  .food-card{
+    background:var(--panel);
+    padding:16px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,0.04);
+  }
+
+  .food-card img{
+    width:100%;
+    border-radius:10px;
+    margin-bottom:10px;
+    display:block;
+  }
+
+  .food-card h3{
+    margin:6px 0 6px;
+    font-size:18px;
+  }
+
+  .food-card p{
+    margin:0;
+    color:var(--muted);
+  }
+
+  .menu{
+    background:var(--panel);
+    border-radius:14px;
+    padding:10px 18px;
+    border:1px solid rgba(255,255,255,0.04);
+  }
+
+  .menu-item{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:12px 0;
+    border-bottom:1px solid var(--border);
+  }
+
+  .menu-item:last-child{ border-bottom:none; }
+
+  .price{
+    color:var(--accent);
+    font-weight:bold;
+    white-space:nowrap;
+  }
+
+  .location{
+    text-align:center;
+    background:var(--panel);
+    border-radius:14px;
+    padding:22px 16px;
+    border:1px solid rgba(255,255,255,0.04);
+  }
+
+  footer{
+    margin-top:60px;
+    padding:28px 16px;
+    text-align:center;
+    background:var(--panel);
+    border-top:1px solid rgba(255,255,255,0.06);
+    border-radius:14px;
+  }
+
+  footer h3{
+    margin:8px 0 10px;
+  }
+
+  .link{
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:bold;
+  }
+</style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="hero">
+      <!-- Replace logo.png with your improved logo file when ready -->
+      <img src="logo.png" alt="Smoke & Dre Grille logo" />
+
+      <h1>Smoke & Dre Grille</h1>
+
+      <p>
+        Real Smoke. Real Flavor. Real Street Food.
+      </p>
+
+      <div class="cta-row">
+        <a class="button" href="tel:14124992389">Call to Order</a>
+        <a class="button secondary" href="sms:+14124992389">Text to Order</a>
+      </div>
+
+      <div class="cta-row" style="margin-top:12px;">
+        <a class="button secondary" href="#menu">View Menu</a>
+        <a class="button secondary" href="#catering">Catering</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Signature Favorites</h2>
+      <p class="sub">The ones that pull people in.</p>
+
+      <div class="food-grid">
+        <div class="food-card">
+          <img src="chicken.jpg" alt="Teriyaki Yum Yum Chicken Skewers" />
+          <h3>Teriyaki Yum Yum Chicken Skewers <span class="price" style="float:right;">$10</span></h3>
+          <p>Teriyaki + Yum Yum sauce</p>
+        </div>
+
+        <div class="food-card">
+          <img src="chili-dogs.jpg" alt="Chili Cheese Dogs" />
+          <h3>Chili Cheese Dogs <span class="price" style="float:right;">$7</span></h3>
+          <p>Beefy chili & creamy cheese</p>
+        </div>
+
+        <div class="food-card">
+          <img src="pizza.jpg" alt="Steak Specialty Pizza" />
+          <h3>Steak Specialty Pizza <span class="price" style="float:right;">$15</span></h3>
+          <p>Loaded steak pizza</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="menu" class="section">
+      <h2>Menu</h2>
+
+      <div class="menu">
+        <div class="menu-item">
+          <span>Chicken Sandwich</span>
+          <span class="price">$7</span>
+        </div>
+
+        <div class="menu-item">
+          <span>Teriyaki Yum Yum Chicken Skewers</span>
+          <span class="price">$10</span>
+        </div>
+
+        <div class="menu-item">
+          <span>Chicken Tenders</span>
+          <span class="price">$7</span>
+        </div>
+
+        <div class="menu-item">
+          <span>Burgers</span>
+          <span class="price">$7</span>
+        </div>
+
+        <div class="menu-item">
+          <span>Chili Cheese Dogs</span>
+          <span class="price">$7</span>
+        </div>
+
+        <div class="menu-item">
+          <span>Kielbasa</span>
+          <span class="price">$7</span>
+        </div>
+
+        <div class="menu-item">
+          <span>Cheese Fries</span>
+          <span class="price">$7</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Pizza</h2>
+
+      <div class="menu">
+        <div class="menu-item">
+          <span>By the Slice</span>
+          <span class="price">$3</span>
+        </div>
+
+        <div class="menu-item">
+          <span>Cheese Pizza</span>
+          <span class="price">$10</span>
+        </div>
+
+        <div class="menu-item">
+          <span>BBQ Chicken Pizza</span>
+          <span class="price">$13</span>
+        </div>
+
+        <div class="menu-item">
+          <span>Lobster Pizza</span>
+          <span class="price">$15</span>
+        </div>
+
+        <div class="menu-item">
+          <span>Steak Specialty Pizza</span>
+          <span class="price">$15</span>
+        </div>
+
+        <div class="menu-item" style="border-bottom:none;">
+          <span>$1.00 per topping (pepperoni, sausage, green peppers, onions, mushrooms)</span>
+          <span class="price"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Where to Find Us</h2>
+
+      <div class="location">
+        <p style="margin:0 0 10px;">Pittsburgh & Ambridge Area</p>
+        <div class="cta-row" style="margin-top:10px;">
+          <a class="button secondary" href="https://www.google.com/maps/search/?api=1&query=Smoke%20and%20Dre%20Grille%20Pittsburgh%20PA">View on Google Maps</a>
+        </div>
+        <p style="margin:14px 0 0; color:var(--muted); font-size:14px;">
+          Check Instagram for daily stops.
+        </p>
+      </div>
+    </div>
+
+    <div id="catering" class="section">
+      <h2>Catering & Events</h2>
+      <p class="sub">Book the truck for your event.</p>
+
+      <div class="cta-row">
+        <a class="button" href="tel:14124992389">Call for Catering</a>
+        <a class="button secondary" href="sms:+14124992389">Text for Catering</a>
+      </div>
+    </div>
+
+    <footer>
+      <div>Call or Text</div>
+      <h3>(412) 499-2389</h3>
+
+      <div>Instagram</div>
+      <div style="margin-top:6px;">
+        <a class="link" href="https://instagram.com/smokes_grille96" target="_blank" rel="noreferrer">@smokes_grille96</a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
