@@ -1,605 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smoke & Dre Grille</title>
-  <meta name="description" content="Smoke & Dre Grille — Real Smoke. Real Flavor. Real Street Food. Serving Pittsburgh & Ambridge. Call or text to order." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root{
-      --bg:#0b0c0f;
-      --panel:#12141a;
-      --panel2:#0f1116;
-      --border:rgba(255,255,255,.08);
-      --text:#f6f7fb;
-      --muted:rgba(255,255,255,.72);
-      --muted2:rgba(255,255,255,.56);
-      --accent:#00a6b2; /* smoke teal */
-      --accent2:#12d6c6;
-      --danger:#ff4d4d;
-      --radius:18px;
-      --shadow: 0 12px 30px rgba(0,0,0,.45);
-      --shadow2: 0 10px 22px rgba(0,0,0,.35);
-      --max:1100px;
-    }
+<title>Smoke & Dre Grille</title>
 
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(0,166,178,.25), transparent 60%),
-        radial-gradient(800px 500px at 90% 20%, rgba(18,214,198,.14), transparent 55%),
-        radial-gradient(900px 600px at 50% 120%, rgba(0,166,178,.10), transparent 60%),
-        var(--bg);
-      color:var(--text);
-    }
+<style>
 
-    a{ color:inherit; }
-    .wrap{ max-width:var(--max); margin:0 auto; padding:22px; }
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:black;
+color:white;
+}
 
-    /* Header / Hero */
-    header{
-      position:relative;
-      overflow:hidden;
-      border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(18,20,26,.92), rgba(10,12,15,.88));
-      border-radius: calc(var(--radius) + 10px);
-      box-shadow: var(--shadow);
-    }
-    .hero{
-      padding:28px 22px 22px;
-      display:grid;
-      gap:18px;
-    }
-    @media (min-width:860px){
-      .hero{ grid-template-columns: 1.15fr .85fr; align-items:center; padding:34px 34px 28px; }
-    }
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-    .brand img{
-      width:64px; height:64px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background:#0b0c0f;
-      padding:8px;
-      box-shadow: var(--shadow2);
-    }
-    .brand h1{
-      margin:0;
-      font-size:30px;
-      letter-spacing:.2px;
-      line-height:1.1;
-    }
-    .tagline{
-      margin:4px 0 0;
-      color: rgba(255,255,255,.78);
-      font-size:14px;
-    }
+/* NAV */
 
-    .headline{
-      margin:12px 0 0;
-      font-size:36px;
-      line-height:1.05;
-      letter-spacing:-.6px;
-    }
-    .headline span{
-      color:var(--accent2);
-      text-shadow: 0 0 24px rgba(18,214,198,.22);
-    }
-    .subhead{
-      margin:12px 0 0;
-      color:var(--muted);
-      max-width:48ch;
-      font-size:16px;
-      line-height:1.45;
-    }
+nav{
+padding:20px 0;
+border-bottom:1px solid #222;
+}
 
-    .ctaRow{
-      margin-top:16px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      text-decoration:none;
-      font-weight:800;
-      letter-spacing:.2px;
-      box-shadow: 0 10px 18px rgba(0,0,0,.22);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      user-select:none;
-    }
-    .btn:hover{ transform: translateY(-1px); border-color: rgba(18,214,198,.35); background: rgba(18,214,198,.07); }
-    .btn.primary{
-      border-color: rgba(18,214,198,.45);
-      background: linear-gradient(135deg, rgba(18,214,198,.22), rgba(0,166,178,.14));
-    }
-    .btn.primary:hover{ background: linear-gradient(135deg, rgba(18,214,198,.28), rgba(0,166,178,.18)); }
-    .btn.small{ padding:10px 12px; font-weight:800; }
+nav .container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
 
-    .heroCard{
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      padding:16px;
-      box-shadow: var(--shadow2);
-      position:relative;
-      overflow:hidden;
-    }
-    .heroCard::before{
-      content:"";
-      position:absolute;
-      inset:-120px -120px auto auto;
-      width:260px; height:260px;
-      background: radial-gradient(circle at center, rgba(18,214,198,.22), transparent 62%);
-      filter: blur(1px);
-    }
-    .heroCard h3{ margin:0 0 8px; font-size:14px; letter-spacing:.6px; text-transform:uppercase; color: rgba(255,255,255,.76); }
-    .pillRow{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
-    .pill{
-      font-size:12px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.78);
-    }
-    .pill.accent{
-      border-color: rgba(18,214,198,.35);
-      color: rgba(18,214,198,.95);
-      background: rgba(18,214,198,.08);
-    }
+.logo{
+font-weight:bold;
+font-size:20px;
+}
 
-    /* Sections */
-    section{ margin-top:26px; }
-    .sectionTitle{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:14px;
-      margin:24px 0 12px;
-    }
-    .sectionTitle h2{
-      margin:0;
-      font-size:22px;
-      letter-spacing:-.2px;
-    }
-    .sectionTitle p{
-      margin:0;
-      color:var(--muted2);
-      font-size:14px;
-    }
+/* HERO */
 
-    .grid{
-      display:grid;
-      gap:14px;
-    }
-    @media (min-width:860px){
-      .grid.two{ grid-template-columns: 1fr 1fr; }
-      .grid.three{ grid-template-columns: 1fr 1fr 1fr; }
-    }
+.hero{
+position:relative;
+height:90vh;
+display:flex;
+align-items:center;
 
-    .card{
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-    }
-    .cardPad{ padding:16px; }
-    .card h3{ margin:0 0 8px; font-size:18px; letter-spacing:-.2px; }
-    .card p{ margin:0; color:var(--muted); line-height:1.45; }
+background-image:url("foodtruck.jpg");
+background-size:cover;
+background-position:center;
+}
 
-    .img{
-      width:100%;
-      height:190px;
-      object-fit:cover;
-      display:block;
-      filter: saturate(1.02) contrast(1.02);
-    }
+.hero-overlay{
+position:absolute;
+inset:0;
 
-    .priceTag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      font-weight:900;
-      border:1px solid rgba(18,214,198,.35);
-      background: rgba(18,214,198,.08);
-      color: rgba(18,214,198,.95);
-      font-size:13px;
-    }
+background:linear-gradient(
+90deg,
+rgba(0,0,0,0.9) 0%,
+rgba(0,0,0,0.7) 40%,
+rgba(0,0,0,0.2) 100%
+);
+}
 
-    /* Menu cards */
-    .menuBoard{
-      border:1px solid var(--border);
-      border-radius: calc(var(--radius) + 6px);
-      background: linear-gradient(180deg, rgba(18,20,26,.7), rgba(10,12,15,.82));
-      box-shadow: var(--shadow);
-      padding:14px;
-    }
-    .menuGrid{
-      display:grid;
-      gap:10px;
-    }
-    @media (min-width:860px){
-      .menuGrid{ grid-template-columns:1fr 1fr; gap:12px; }
-    }
-    .menuItem{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
-      padding:14px 14px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.02);
-    }
-    .menuItem strong{ display:block; font-size:15px; letter-spacing:.1px; }
-    .menuItem span{ display:block; margin-top:6px; color:var(--muted2); font-size:13px; line-height:1.35; }
-    .menuPrice{
-      font-weight:1000;
-      color:var(--accent2);
-      white-space:nowrap;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(18,214,198,.28);
-      background: rgba(18,214,198,.06);
-      font-size:13px;
-    }
+.hero-content{
+position:relative;
+max-width:700px;
+}
 
-    /* Footer */
-    footer{
-      margin:26px 0 90px; /* leave room for sticky bar */
-      border:1px solid var(--border);
-      border-radius: calc(var(--radius) + 8px);
-      background: rgba(255,255,255,.02);
-      box-shadow: var(--shadow2);
-      padding:16px;
-      text-align:center;
-    }
-    .link{
-      color: var(--accent2);
-      font-weight:900;
-      text-decoration:none;
-    }
-    .link:hover{ text-decoration:underline; }
+.hero-tag{
+color:#ffa34d;
+font-weight:bold;
+margin-bottom:10px;
+}
 
-    /* Sticky bottom action bar (mobile) */
-    .sticky{
-      position:fixed;
-      left:0; right:0; bottom:0;
-      padding:10px 12px;
-      background: rgba(8,10,12,.78);
-      backdrop-filter: blur(10px);
-      border-top:1px solid rgba(255,255,255,.08);
-      z-index:9999;
-    }
-    .stickyInner{
-      max-width:var(--max);
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:10px;
-      padding:0 10px;
-    }
-    .sticky .btn{
-      padding:12px 10px;
-      border-radius:14px;
-      font-weight:1000;
-      font-size:14px;
-    }
-  </style>
+.hero h1{
+font-size:64px;
+line-height:1.1;
+margin-bottom:20px;
+}
+
+.hero p{
+color:#cfcfcf;
+font-size:18px;
+margin-bottom:30px;
+}
+
+.hero-buttons{
+display:flex;
+gap:16px;
+}
+
+/* BUTTONS */
+
+.button{
+padding:14px 26px;
+border-radius:8px;
+font-weight:bold;
+text-decoration:none;
+}
+
+.button-primary{
+background:#ff8c2f;
+color:black;
+}
+
+.button-secondary{
+border:1px solid #555;
+color:white;
+}
+
+/* SECTION */
+
+section{
+padding:80px 0;
+}
+
+/* MENU */
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+margin-top:40px;
+}
+
+.menu-item{
+background:#111;
+padding:30px;
+border-radius:12px;
+text-align:center;
+}
+
+.menu-item img{
+width:100%;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+/* LOCATION */
+
+.location-box{
+background:#111;
+padding:40px;
+border-radius:12px;
+}
+
+/* REVIEWS */
+
+.reviews{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+margin-top:40px;
+}
+
+.review{
+background:#111;
+padding:25px;
+border-radius:10px;
+}
+
+/* SIGNUP */
+
+.signup{
+background:#111;
+padding:40px;
+border-radius:12px;
+text-align:center;
+}
+
+.signup input{
+padding:14px;
+width:260px;
+border:none;
+margin-right:10px;
+border-radius:6px;
+}
+
+/* FOOTER */
+
+footer{
+border-top:1px solid #222;
+padding:30px 0;
+margin-top:40px;
+}
+
+footer .container{
+display:flex;
+justify-content:space-between;
+}
+
+.credit a{
+color:#ffa34d;
+text-decoration:none;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero h1{
+font-size:42px;
+}
+
+.menu-grid{
+grid-template-columns:1fr;
+}
+
+.reviews{
+grid-template-columns:1fr;
+}
+
+footer .container{
+flex-direction:column;
+gap:20px;
+}
+
+}
+
+</style>
+
 </head>
 
+
 <body>
-  <div class="wrap">
-    <header>
-      <div class="hero">
-        <div>
-          <div class="brand">
-            <!-- Put your improved logo file in the repo as: logo.png -->
-            <img src="logo.png" alt="Smoke & Dre Grille logo" />
-            <div>
-              <h1>Smoke & Dre Grille</h1>
-              <div class="tagline">Real Smoke. Real Flavor. Real Street Food.</div>
-            </div>
-          </div>
 
-          <div class="headline">Street food that <span>hits</span>.</div>
-          <div class="subhead">
-            Serving the Pittsburgh & Ambridge area. Call or text to order fast — and book the truck for catering & events.
-          </div>
+<nav>
 
-          <div class="ctaRow">
-            <a class="btn primary" href="tel:14124992389">Call to Order</a>
-            <a class="btn" href="sms:+14124992389">Text to Order</a>
-            <a class="btn" href="#menu">Menu</a>
-            <a class="btn" href="#find-us">Directions</a>
-          </div>
-        </div>
+<div class="container">
 
-        <div class="heroCard">
-          <h3>Today’s Stop (edit this)</h3>
-          <p style="margin:0;color:var(--muted);line-height:1.45;">
-            Put your current spot here for the day.<br/>
-            Example: <strong>“Ambridge — Merchant St (3–8pm)”</strong>
-          </p>
-          <div class="pillRow">
-            <div class="pill accent">Pittsburgh</div>
-            <div class="pill accent">Ambridge</div>
-            <div class="pill">Call/Text to order</div>
-            <div class="pill">Catering available</div>
-          </div>
-        </div>
-      </div>
-    </header>
+<div class="logo">🔥 Smoke & Dre Grille</div>
 
-    <!-- Signature -->
-    <section>
-      <div class="sectionTitle">
-        <h2>Signature Favorites</h2>
-        <p>These are the “pull-up right now” items.</p>
-      </div>
+<div>
+<a href="#menu">Menu</a>
+<a href="#location" style="margin-left:20px">Location</a>
+</div>
 
-      <div class="grid three">
-        <div class="card">
-          <!-- Replace with your best skewer photo: chicken.jpg -->
-          <img class="img" src="chicken.jpg" alt="Teriyaki Yum Yum Chicken Skewers" />
-          <div class="cardPad">
-            <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;">
-              <h3 style="margin:0;">Teriyaki Yum Yum Chicken Skewers</h3>
-              <div class="priceTag">$10</div>
-            </div>
-            <p style="margin-top:8px;">Marinated chicken with teriyaki + yum yum sauce.</p>
-          </div>
-        </div>
+</div>
 
-        <div class="card">
-          <img class="img" src="chili-dogs.jpg" alt="Chili Cheese Dogs" />
-          <div class="cardPad">
-            <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;">
-              <h3 style="margin:0;">Chili Cheese Dogs</h3>
-              <div class="priceTag">$7</div>
-            </div>
-            <p style="margin-top:8px;">Beefy chili + creamy cheese. Classic, messy, perfect.</p>
-          </div>
-        </div>
+</nav>
 
-        <div class="card">
-          <img class="img" src="pizza.jpg" alt="Steak Specialty Pizza" />
-          <div class="cardPad">
-            <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;">
-              <h3 style="margin:0;">Steak Specialty Pizza</h3>
-              <div class="priceTag">$15</div>
-            </div>
-            <p style="margin-top:8px;">Loaded steak pizza with serious flavor.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Menu -->
-    <section id="menu">
-      <div class="sectionTitle">
-        <h2>Menu</h2>
-        <p>Clean, easy to read, not bland.</p>
-      </div>
 
-      <div class="menuBoard">
-        <div class="menuGrid">
-          <div class="menuItem">
-            <div>
-              <strong>Chicken Sandwich</strong>
-              <span>Chicken with honey BBQ sauce</span>
-            </div>
-            <div class="menuPrice">$7</div>
-          </div>
+<header class="hero">
 
-          <div class="menuItem">
-            <div>
-              <strong>Teriyaki Yum Yum Chicken Skewers</strong>
-              <span>Marinated chicken • teriyaki + yum yum</span>
-            </div>
-            <div class="menuPrice">$10</div>
-          </div>
+<div class="hero-overlay"></div>
 
-          <div class="menuItem">
-            <div>
-              <strong>Chicken Tenders</strong>
-              <span>Breaded chicken with teriyaki sauce</span>
-            </div>
-            <div class="menuPrice">$7</div>
-          </div>
+<div class="container hero-content">
 
-          <div class="menuItem">
-            <div>
-              <strong>Burgers</strong>
-              <span>Juicy beef with melty cheese</span>
-            </div>
-            <div class="menuPrice">$7</div>
-          </div>
+<div class="hero-tag">Serving Ambridge & Pittsburgh</div>
 
-          <div class="menuItem">
-            <div>
-              <strong>Chili Cheese Dogs</strong>
-              <span>Beefy chili & creamy cheese</span>
-            </div>
-            <div class="menuPrice">$7</div>
-          </div>
+<h1>
+I left the 9-to-5 to bring you street food that actually hits the spot.
+</h1>
 
-          <div class="menuItem">
-            <div>
-              <strong>Kielbasa</strong>
-              <span>Smoky sausage on a bun</span>
-            </div>
-            <div class="menuPrice">$7</div>
-          </div>
+<p>
+Smoke & Dre Grille is built on real hustle, hot food, and big flavor.  
+Pull up for fresh grilled favorites, bold sauces, and gourmet street food worth leaving work early for.
+</p>
 
-          <div class="menuItem">
-            <div>
-              <strong>Cheese Fries</strong>
-              <span>Crispy fries with creamy cheese sauce</span>
-            </div>
-            <div class="menuPrice">$7</div>
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="hero-buttons">
 
-    <!-- Pizza -->
-    <section id="pizza">
-      <div class="sectionTitle">
-        <h2>Pizza</h2>
-        <p>Speciality pies + slice option.</p>
-      </div>
+<a class="button button-primary" href="#menu">
+View Menu
+</a>
 
-      <div class="menuBoard">
-        <div class="menuGrid">
-          <div class="menuItem">
-            <div>
-              <strong>By the Slice</strong>
-              <span>Quick, hot, ready</span>
-            </div>
-            <div class="menuPrice">$3</div>
-          </div>
+<a class="button button-secondary" href="#location">
+Find the Truck
+</a>
 
-          <div class="menuItem">
-            <div>
-              <strong>Cheese Pizza</strong>
-              <span>Classic cheese pie</span>
-            </div>
-            <div class="menuPrice">$10</div>
-          </div>
+</div>
 
-          <div class="menuItem">
-            <div>
-              <strong>BBQ Chicken Pizza</strong>
-              <span>Smoky BBQ chicken</span>
-            </div>
-            <div class="menuPrice">$13</div>
-          </div>
+</div>
 
-          <div class="menuItem">
-            <div>
-              <strong>Lobster Pizza</strong>
-              <span>Premium specialty pie</span>
-            </div>
-            <div class="menuPrice">$15</div>
-          </div>
+</header>
 
-          <div class="menuItem">
-            <div>
-              <strong>Steak Pizza</strong>
-              <span>Loaded steak specialty</span>
-            </div>
-            <div class="menuPrice">$15</div>
-          </div>
 
-          <div class="menuItem">
-            <div>
-              <strong>Toppings</strong>
-              <span>Pepperoni, sausage, green peppers, onions, mushrooms</span>
-            </div>
-            <div class="menuPrice">$1</div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Find Us -->
-    <section id="find-us">
-      <div class="sectionTitle">
-        <h2>Where to Find Us</h2>
-        <p>Directions that actually work.</p>
-      </div>
+<section id="menu">
 
-      <div class="grid two">
-        <div class="card">
-          <div class="cardPad">
-            <h3>Pittsburgh & Ambridge Area</h3>
-            <p>Tap for directions. If you’re not sure where we are today, check Instagram for the daily stop.</p>
-            <div class="ctaRow" style="margin-top:12px;">
-              <!-- ACTIVE directions link -->
-              <a class="btn primary" target="_blank" rel="noreferrer"
-                href="https://www.google.com/maps/dir/?api=1&destination=Ambridge%2C%20PA">
-                Get Directions
-              </a>
-              <a class="btn" target="_blank" rel="noreferrer"
-                href="https://www.google.com/maps/search/?api=1&query=Smoke%20%26%20Dre%20Grille%20Pittsburgh%20PA">
-                Search on Maps
-              </a>
-            </div>
-          </div>
-        </div>
+<div class="container">
 
-        <div class="card">
-          <div class="cardPad">
-            <h3>Instagram (Daily Stops)</h3>
-            <p>Follow for today’s location, hours, and pop-ups.</p>
-            <div class="ctaRow" style="margin-top:12px;">
-              <a class="btn primary" target="_blank" rel="noreferrer"
-                href="https://instagram.com/smokes_grille96">
-                @smokes_grille96
-              </a>
-              <a class="btn" href="sms:+14124992389">Text for Location</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<h2>Featured Food</h2>
 
-    <!-- Catering -->
-    <section id="catering">
-      <div class="sectionTitle">
-        <h2>Catering & Events</h2>
-        <p>Book the truck.</p>
-      </div>
+<div class="menu-grid">
 
-      <div class="card">
-        <div class="cardPad">
-          <h3>Fast booking</h3>
-          <p>Call or text to lock in dates for parties, work events, and pop-ups.</p>
-          <div class="ctaRow" style="margin-top:12px;">
-            <a class="btn primary" href="tel:14124992389">Call for Catering</a>
-            <a class="btn" href="sms:+14124992389">Text for Catering</a>
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="menu-item">
+<h3>Chicken on a Stick</h3>
+<p>Teriyaki + Yum Yum Sauce</p>
+</div>
 
-    <footer>
-      <div style="font-weight:900;">Smoke & Dre Grille</div>
-      <div style="margin-top:8px;color:var(--muted);">Call/Text: <a class="link" href="tel:14124992389">(412) 499-2389</a></div>
-      <div style="margin-top:6px;color:var(--muted);">Instagram: <a class="link" target="_blank" rel="noreferrer" href="https://instagram.com/smokes_grille96">@smokes_grille96</a></div>
-    </footer>
-  </div>
+<div class="menu-item">
+<h3>Chili Cheese Dogs</h3>
+<p>Loaded street classic</p>
+</div>
 
-  <!-- Sticky action bar -->
-  <div class="sticky">
-    <div class="stickyInner">
-      <a class="btn primary" href="tel:14124992389">Call</a>
-      <a class="btn" href="sms:+14124992389">Text</a>
-      <a class="btn" target="_blank" rel="noreferrer"
-        href="https://www.google.com/maps/search/?api=1&query=Smoke%20%26%20Dre%20Grille%20Pittsburgh%20PA">
-        Directions
-      </a>
-    </div>
-  </div>
+<div class="menu-item">
+<h3>Steak Specialty Pizza</h3>
+<p>Big flavor pizza slice</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="location">
+
+<div class="container">
+
+<h2>Where to Find the Truck</h2>
+
+<div class="location-box">
+
+<p><strong>Area:</strong> Ambridge / Pittsburgh</p>
+
+<p><strong>Hours:</strong> Fri–Sun 12pm until sold out</p>
+
+<a class="button button-primary" href="#">
+Open in Google Maps
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<div class="container">
+
+<h2>Customer Reviews</h2>
+
+<div class="reviews">
+
+<div class="review">
+★★★★★  
+Best food truck around.
+</div>
+
+<div class="review">
+★★★★★  
+Chicken on a stick is insane.
+</div>
+
+<div class="review">
+★★★★★  
+Finally real street food in this area.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<div class="container">
+
+<div class="signup">
+
+<h2>Join the Smoke Crew</h2>
+
+<p>Get location alerts and special discounts.</p>
+
+<input type="email" placeholder="Enter email">
+
+<a class="button button-primary">Join</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+<div class="container">
+
+<div>
+
+Smoke & Dre Grille  
+<br>
+Ambridge / Pittsburgh  
+<br>
+(412) 499-2389  
+<br>
+@smokes_grille96
+
+</div>
+
+<div class="credit">
+
+Made by  
+<a href="#">High Ground Websites</a>
+
+</div>
+
+</div>
+
+</footer>
+
+
+
 </body>
 </html>
