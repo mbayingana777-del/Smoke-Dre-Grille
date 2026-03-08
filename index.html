@@ -228,24 +228,25 @@
       background:#111;
     }
 
-    .food-shot .dish{
-      position:absolute;
-      inset:18px;
-      border-radius:22px;
-      background:
-        radial-gradient(circle at 40% 40%, rgba(255,177,92,.45), transparent 18%),
-        radial-gradient(circle at 55% 52%, rgba(255,120,0,.35), transparent 24%),
-        radial-gradient(circle at 65% 40%, rgba(255,210,140,.18), transparent 16%),
-        linear-gradient(135deg, #1a1a1a, #0d0d0d);
-      border:1px solid #262626;
-      display:grid;
-      place-items:center;
-    }
+   .food-shot .dish{
+  position:absolute;
+  inset:0;
+  border-radius:0;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
 
-    .dish span{
-      font-size:74px;
-      filter:drop-shadow(0 18px 28px rgba(0,0,0,.35));
-    }
+.dish span{
+  display:none;
+}
+
+.dish::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.18) 100%);
+}
 
     .food-copy{padding:20px}
 
