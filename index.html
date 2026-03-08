@@ -687,48 +687,44 @@
 
  <script>
 const SHEET_ID = "1_UlglhOM7eLPYSZ8xGadKYEmf0nnjxo9OH3VIVVFpIM";
-const API_KEY = "AIzaSyBub37cwN_kfgTuStteDRdssP-_kwllqZA";
+const API_KEY = "PASTE_YOUR_API_KEY_HERE";
 const SHEET_RANGE = "Sheet1!A2:D2";
 
 async function loadTruckData() {
-
   const url =
     `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(SHEET_RANGE)}?key=${API_KEY}`;
 
   try {
-
     const response = await fetch(url);
     const data = await response.json();
 
     const row = data.values[0];
 
-    const todayStop = row[0];
-    const todayAddress = row[1];
-    const todayHours = row[2];
-    const nextStop = row[3];
+    const todayStop = row[0] || "Location coming soon";
+    const todayAddress = row[1] || "";
+    const todayHours = row[2] || "Hours coming soon";
+    const nextStop = row[3] || "Next stop coming soon";
 
     document.getElementById("todayStop").textContent = todayStop;
     document.getElementById("todayHours").textContent = todayHours;
     document.getElementById("nextStop").textContent = nextStop;
 
-    const encodedAddress = encodeURIComponent(todayAddress);
+    const fullLocation = `${todayStop}, ${todayAddress}`.trim();
+    const encodedLocation = encodeURIComponent(fullLocation);
 
     document.getElementById("truckMap").src =
-      `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
+      `https://www.google.com/maps?q=${encodedLocation}&z=16&output=embed`;
 
     document.getElementById("directionsBtn").href =
-      `https://www.google.com/maps?q=${encodedAddress}`;
+      `https://www.google.com/maps/search/?api=1&query=${encodedLocation}`;
 
   } catch (error) {
-
     console.error("Sheet failed to load", error);
 
     document.getElementById("todayStop").textContent = "Location unavailable";
     document.getElementById("todayHours").textContent = "Check social media";
     document.getElementById("nextStop").textContent = "Next stop coming soon";
-
   }
-
 }
 
 loadTruckData();
