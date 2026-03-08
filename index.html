@@ -685,23 +685,53 @@
     </div>
   </section>
 
-  <script>
-    const truckData = {
-      todayStop: "Fermata Brewing Co",
-      todayAddress: "918 Merchant St, Ambridge, PA 15003",
-      todayHours: "Friday · 4 PM to 10 PM",
-      nextStop: "Saturday · Fred's Divot · 6 PM to 11 PM"
-    };
+ <script>
+const SHEET_ID = "1_UlglhOM7eLPYSZ8xGadKYEmf0nnjxo9OH3VIVVFpIM";
+const API_KEY = "AIzaSyBub37cwN_kfgTuStteDRdssP-_kwllqZA";
+const SHEET_RANGE = "Sheet1!A2:D2";
 
-    const encodedAddress = encodeURIComponent(truckData.todayAddress);
-    const mapUrl = `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
-    const directionsUrl = `https://www.google.com/maps?q=${encodedAddress}`;
+async function loadTruckData() {
 
-    document.getElementById("todayStop").textContent = truckData.todayStop;
-    document.getElementById("todayHours").textContent = truckData.todayHours;
-    document.getElementById("nextStop").textContent = truckData.nextStop;
-    document.getElementById("truckMap").src = mapUrl;
-    document.getElementById("directionsBtn").href = directionsUrl;
-  </script>
+  const url =
+    `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(SHEET_RANGE)}?key=${API_KEY}`;
+
+  try {
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const row = data.values[0];
+
+    const todayStop = row[0];
+    const todayAddress = row[1];
+    const todayHours = row[2];
+    const nextStop = row[3];
+
+    document.getElementById("todayStop").textContent = todayStop;
+    document.getElementById("todayHours").textContent = todayHours;
+    document.getElementById("nextStop").textContent = nextStop;
+
+    const encodedAddress = encodeURIComponent(todayAddress);
+
+    document.getElementById("truckMap").src =
+      `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
+
+    document.getElementById("directionsBtn").href =
+      `https://www.google.com/maps?q=${encodedAddress}`;
+
+  } catch (error) {
+
+    console.error("Sheet failed to load", error);
+
+    document.getElementById("todayStop").textContent = "Location unavailable";
+    document.getElementById("todayHours").textContent = "Check social media";
+    document.getElementById("nextStop").textContent = "Next stop coming soon";
+
+  }
+
+}
+
+loadTruckData();
+</script>
 </body>
 </html>
