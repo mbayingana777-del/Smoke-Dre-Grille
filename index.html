@@ -880,22 +880,23 @@
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const signupForm = document.getElementById("signupForm");
-    const joinBtn = document.getElementById("joinBtn");
-    const successMessage = document.getElementById("success");
+   const signupForm = document.getElementById("signupForm");
+const joinBtn = document.getElementById("joinBtn");
+const successMessage = document.getElementById("success");
 
-    signupForm.addEventListener("submit", function () {
-      successMessage.style.display = "none";
-      joinBtn.disabled = true;
-      joinBtn.textContent = "Joining...";
+signupForm.addEventListener("submit", function () {
+  successMessage.style.display = "none";
+  successMessage.textContent = "You're in. Smoke Crew gets the first word.";
+  joinBtn.disabled = true;
+  joinBtn.textContent = "Joining...";
 
-      setTimeout(() => {
-        successMessage.style.display = "block";
-        signupForm.reset();
-        joinBtn.disabled = false;
-        joinBtn.textContent = "Join Now";
-      }, 900);
-    });
+  setTimeout(() => {
+    signupForm.reset();
+    joinBtn.disabled = false;
+    joinBtn.textContent = "Join Now";
+    successMessage.style.display = "block";
+  }, 1200);
+});
 
     const shareBtn = document.getElementById("shareBtn");
     const shareMessage = document.getElementById("shareMessage");
