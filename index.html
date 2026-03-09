@@ -95,6 +95,7 @@
       font-weight:700;
       transition:.22s ease;
       cursor:pointer;
+      font:inherit;
     }
 
     .button:hover{transform:translateY(-1px)}
@@ -117,16 +118,16 @@
       background:transparent;
     }
 
-  .hero{
-  position:relative;
-  min-height:calc(100vh - 84px);
-  display:flex;
-  align-items:center;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,.22) 0%, rgba(0,0,0,.40) 38%, rgba(0,0,0,.78) 100%),
-    linear-gradient(90deg, rgba(0,0,0,.74) 0%, rgba(0,0,0,.30) 55%, rgba(0,0,0,.56) 100%),
-    url('hero.png') center center / cover no-repeat;
-}
+    .hero{
+      position:relative;
+      min-height:calc(100vh - 84px);
+      display:flex;
+      align-items:center;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.22) 0%, rgba(0,0,0,.40) 38%, rgba(0,0,0,.78) 100%),
+        linear-gradient(90deg, rgba(0,0,0,.74) 0%, rgba(0,0,0,.30) 55%, rgba(0,0,0,.56) 100%),
+        url('hero.png') center center / cover no-repeat;
+    }
 
     .hero::before{
       content:"";
@@ -138,18 +139,19 @@
       pointer-events:none;
     }
 
-  .hero-content{
-  position:relative;
-  z-index:2;
-  width:100%;
-  display:flex;
-  align-items:center;
-}
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:100%;
+      display:flex;
+      align-items:center;
+    }
 
-.hero-copy{
-  max-width:640px;
-  margin-left:clamp(32px,5vw,80px);
-}
+    .hero-copy{
+      max-width:640px;
+      margin-left:clamp(32px,5vw,80px);
+    }
+
     .eyebrow{
       display:inline-flex;
       gap:10px;
@@ -171,13 +173,13 @@
       max-width:780px;
     }
 
-   .hero p{
-  margin:0 0 28px;
-  color:#efe7db;
-  max-width:540px;
-  font-size:20px;
-  line-height:1.6;
-}
+    .hero p{
+      margin:0 0 28px;
+      color:#efe7db;
+      max-width:540px;
+      font-size:20px;
+      line-height:1.6;
+    }
 
     .hero-actions{
       display:flex;
@@ -228,25 +230,25 @@
       background:#111;
     }
 
-   .food-shot .dish{
-  position:absolute;
-  inset:0;
-  border-radius:0;
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-}
+    .food-shot .dish{
+      position:absolute;
+      inset:0;
+      border-radius:0;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
 
-.dish span{
-  display:none;
-}
+    .dish span{
+      display:none;
+    }
 
-.dish::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.18) 100%);
-}
+    .dish::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.18) 100%);
+    }
 
     .food-copy{padding:20px}
 
@@ -380,10 +382,12 @@
       display:flex;
       gap:12px;
       flex-wrap:wrap;
+      align-items:center;
     }
 
+    input[type="text"],
     input[type="email"]{
-      flex:1 1 240px;
+      flex:1 1 220px;
       min-height:52px;
       border-radius:14px;
       border:1px solid #2d2d2d;
@@ -393,9 +397,14 @@
       outline:none;
     }
 
+    input[type="text"]:focus,
     input[type="email"]:focus{
       border-color:#4e361f;
       box-shadow:0 0 0 4px rgba(255,138,29,.08);
+    }
+
+    input::placeholder{
+      color:#8f867b;
     }
 
     .referral-badge{
@@ -408,6 +417,63 @@
     }
 
     .muted{color:var(--muted)}
+
+    .site-footer{
+      margin-top:24px;
+      padding:34px 0 18px;
+      border-top:1px solid rgba(255,255,255,.06);
+      background:linear-gradient(180deg, #0a0a0a 0%, #060606 100%);
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.3fr 1fr 1fr 1fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    .footer-logo{
+      height:52px;
+      width:auto;
+      margin-bottom:14px;
+    }
+
+    .footer-copy{
+      margin:0;
+      color:var(--muted);
+      max-width:320px;
+    }
+
+    .footer-block h3{
+      margin:0 0 12px;
+      font-size:16px;
+      color:var(--text);
+    }
+
+    .footer-block p{
+      margin:0 0 10px;
+      color:var(--muted);
+    }
+
+    .footer-block a{
+      color:var(--muted);
+    }
+
+    .footer-block a:hover{
+      color:var(--text);
+    }
+
+    .footer-bottom{
+      margin-top:24px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.06);
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:14px;
+    }
 
     @media (max-width: 980px){
       .location-wrap, .cta-grid{
@@ -426,6 +492,10 @@
 
       .hero{
         min-height:82vh;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
       }
     }
 
@@ -452,6 +522,14 @@
       .site-logo{
         height:46px;
       }
+
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+      }
     }
   </style>
 </head>
@@ -463,7 +541,7 @@
       </a>
 
       <div class="nav-links">
-       <a href="menu.html">Menu</a>
+        <a href="menu.html">Menu</a>
         <a href="#location">Location</a>
         <a href="#reviews">Reviews</a>
         <a href="#signup">Smoke Crew</a>
@@ -506,9 +584,9 @@
 
       <div class="menu-grid">
         <article class="card">
-         <div class="food-shot">
-  <div class="dish" style="background-image:url('chicken-on-a-stick.png');"></div>
-</div>
+          <div class="food-shot">
+            <div class="dish" style="background-image:url('chicken-on-a-stick.png');"></div>
+          </div>
           <div class="food-copy">
             <h3 class="food-title">Chicken on a Stick</h3>
             <p class="food-desc">Juicy grilled chicken glazed with teriyaki and yum yum sauce.</p>
@@ -518,8 +596,8 @@
 
         <article class="card">
           <div class="food-shot">
-  <div class="dish" style="background-image:url('chili-cheese-dogs.png');"></div>
-</div>
+            <div class="dish" style="background-image:url('chili-cheese-dogs.png');"></div>
+          </div>
           <div class="food-copy">
             <h3 class="food-title">Chili Cheese Dogs</h3>
             <p class="food-desc">Messy in the best way — loaded, cheesy, and made for real comfort cravings.</p>
@@ -529,8 +607,8 @@
 
         <article class="card">
           <div class="food-shot">
-  <div class="dish" style="background-image:url('steak-specialty-pizza.png');"></div>
-</div>
+            <div class="dish" style="background-image:url('steak-specialty-pizza.png');"></div>
+          </div>
           <div class="food-copy">
             <h3 class="food-title">Steak Specialty Pizza</h3>
             <p class="food-desc">Savory steak, melty cheese, and food truck attitude in every slice.</p>
@@ -634,8 +712,8 @@
           <div class="stars">★★★★★</div>
           <p>
             The BEST pizza! Had one of the specials tonight, the Steak Specialty Pizza and it was so amazing! (I would have included pics but sorry my phone didn't eat first tonight! Lol!) We follow their truck around to get their pizza, and we are so happy they were open after me and my boyfriend got some drinks! We love you Smoke and Dre's!!
-         
-            <small>Donna P</small>
+          </p>
+          <small>Donna P</small>
         </article>
 
         <article class="card review">
@@ -658,105 +736,213 @@
   </section>
 
   <section class="section" id="signup">
-  <div class="container">
-    <div class="cta-grid">
-      <article class="card signup-card">
-        <div class="eyebrow" style="margin-bottom:12px">📩 Join the Smoke Crew</div>
-        <h2 class="section-title" style="font-size:38px">Get alerts, specials, and new menu drops.</h2>
-        <p class="section-copy">Be the first to hear where we’re parked, what’s cooking, and when special deals drop.</p>
+    <div class="container">
+      <div class="cta-grid">
+        <article class="card signup-card">
+          <div class="eyebrow" style="margin-bottom:12px">📩 Join the Smoke Crew</div>
+          <h2 class="section-title" style="font-size:38px">Get alerts, specials, and new menu drops.</h2>
+          <p class="section-copy">Be the first to hear where we’re parked, what’s cooking, and when special deals drop.</p>
 
-        <form
-          id="signupForm"
-          class="signup-form"
-          action="YOUR_WEB_APP_URL_HERE"
-          method="POST"
-          target="hidden_iframe"
-        >
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First name"
-            aria-label="First name"
-            required
+          <form
+            id="signupForm"
+            class="signup-form"
+            action="YOUR_WEB_APP_URL_HERE"
+            method="POST"
+            target="hidden_iframe"
           >
-          <input
-            type="email"
-            name="email"
-            placeholder="Email address"
-            aria-label="Email address"
-            required
-          >
-          <button id="joinBtn" class="button button-primary" type="submit">Join Now</button>
-        </form>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First name"
+              aria-label="First name"
+              required
+            >
+            <input
+              type="email"
+              name="email"
+              placeholder="Email address"
+              aria-label="Email address"
+              required
+            >
+            <button id="joinBtn" class="button button-primary" type="submit">Join Now</button>
+          </form>
 
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-        <p id="success" style="display:none;color:var(--success);margin-top:14px">
-          You're in. Smoke Crew gets the first word.
-        </p>
-      </article>
+          <p id="success" style="display:none;color:var(--success);margin-top:14px">
+            You're in. Smoke Crew gets the first word.
+          </p>
+        </article>
 
-      <article class="card referral-card">
-        <div class="eyebrow" style="margin-bottom:12px">🎉 Share with a friend</div>
-        <h2 class="section-title" style="font-size:38px">Bring somebody hungry. Save on the next stop.</h2>
-        <p class="section-copy">Bring a hungry friend with you and get 20% off your meal. Simple.</p>
-        <div class="referral-badge">20% OFF your meal</div>
+        <article class="card referral-card">
+          <div class="eyebrow" style="margin-bottom:12px">🎉 Share with a friend</div>
+          <h2 class="section-title" style="font-size:38px">Bring somebody hungry. Save on the next stop.</h2>
+          <p class="section-copy">Bring a hungry friend with you and get 20% off your meal. Simple.</p>
+          <div class="referral-badge">20% OFF your meal</div>
 
-        <div style="margin-top:20px">
-          <button id="shareBtn" class="button button-secondary" type="button">Share</button>
-        </div>
+          <div style="margin-top:20px">
+            <button id="shareBtn" class="button button-secondary" type="button">Share</button>
+          </div>
 
-        <p id="shareMessage" style="display:none;color:var(--success);margin-top:14px">
-          Link copied. Send it to your friend.
-        </p>
-      </article>
+          <p id="shareMessage" style="display:none;color:var(--success);margin-top:14px">
+            Link copied. Send it to your friend.
+          </p>
+        </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
- <script>
-const SHEET_ID = "1_UlglhOM7eLPYSZ8xGadKYEmf0nnjxo9OH3VIVVFpIM";
-const API_KEY = "AIzaSyBub37cwN_kfgTuStteDRdssP-_kwllqZA";
-const SHEET_RANGE = "Sheet1!A2:D2";
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Smoke & Dre Grille logo" class="footer-logo">
+        <p class="footer-copy">
+          Fresh street food, bold flavor, and local stops worth pulling up for.
+        </p>
+      </div>
 
-async function loadTruckData() {
-  const url =
-    `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(SHEET_RANGE)}?key=${API_KEY}`;
+      <div class="footer-block">
+        <h3>Contact</h3>
+        <p><a href="tel:+14124992389">(412) 499-2389</a></p>
+        <p><a href="https://www.instagram.com/smokes_grille96/" target="_blank" rel="noopener noreferrer">@smokes_grille96</a></p>
+      </div>
 
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
+      <div class="footer-block">
+        <h3>Today</h3>
+        <p id="footerStop">Loading location...</p>
+        <p id="footerHours">Loading hours...</p>
+      </div>
 
-    const row = data.values[0];
+      <div class="footer-block">
+        <h3>Smoke Crew</h3>
+        <p>Join for location updates, specials, and menu drops.</p>
+      </div>
+    </div>
 
-    const todayStop = row[0] || "Location coming soon";
-    const todayAddress = row[1] || "";
-    const todayHours = row[2] || "Hours coming soon";
-    const nextStop = row[3] || "Next stop coming soon";
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Smoke & Dre Grille. All rights reserved.</p>
+      <p>Made by <strong>RocketDevs</strong></p>
+    </div>
+  </footer>
 
-    document.getElementById("todayStop").textContent = todayStop;
-    document.getElementById("todayHours").textContent = todayHours;
-    document.getElementById("nextStop").textContent = nextStop;
+  <script>
+    const SHEET_ID = "1_UlglhOM7eLPYSZ8xGadKYEmf0nnjxo9OH3VIVVFpIM";
+    const API_KEY = "AIzaSyBub37cwN_kfgTuStteDRdssP-_kwllqZA";
+    const SHEET_RANGE = "Sheet1!A2:D2";
 
-    const fullLocation = `${todayStop}, ${todayAddress}`.trim();
-    const encodedLocation = encodeURIComponent(fullLocation);
+    async function loadTruckData() {
+      const url =
+        `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(SHEET_RANGE)}?key=${API_KEY}`;
 
-    document.getElementById("truckMap").src =
-      `https://www.google.com/maps?q=${encodedLocation}&z=16&output=embed`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const row = (data.values && data.values[0]) ? data.values[0] : [];
 
-    document.getElementById("directionsBtn").href =
-      `https://www.google.com/maps/search/?api=1&query=${encodedLocation}`;
+        const todayStop = row[0] || "Location coming soon";
+        const todayAddress = row[1] || "";
+        const todayHours = row[2] || "Hours coming soon";
+        const nextStop = row[3] || "Next stop coming soon";
 
-  } catch (error) {
-    console.error("Sheet failed to load", error);
+        document.getElementById("todayStop").textContent = todayStop;
+        document.getElementById("todayHours").textContent = todayHours;
+        document.getElementById("nextStop").textContent = nextStop;
 
-    document.getElementById("todayStop").textContent = "Location unavailable";
-    document.getElementById("todayHours").textContent = "Check social media";
-    document.getElementById("nextStop").textContent = "Next stop coming soon";
-  }
-}
+        const footerStop = document.getElementById("footerStop");
+        const footerHours = document.getElementById("footerHours");
+        if (footerStop) footerStop.textContent = todayStop;
+        if (footerHours) footerHours.textContent = todayHours;
 
-loadTruckData();
-</script>
+        const fullLocation = `${todayStop}, ${todayAddress}`.trim();
+        const encodedLocation = encodeURIComponent(fullLocation);
+
+        document.getElementById("truckMap").src =
+          `https://www.google.com/maps?q=${encodedLocation}&z=16&output=embed`;
+
+        document.getElementById("directionsBtn").href =
+          `https://www.google.com/maps/search/?api=1&query=${encodedLocation}`;
+
+      } catch (error) {
+        console.error("Sheet failed to load", error);
+
+        document.getElementById("todayStop").textContent = "Location unavailable";
+        document.getElementById("todayHours").textContent = "Check social media";
+        document.getElementById("nextStop").textContent = "Next stop coming soon";
+
+        const footerStop = document.getElementById("footerStop");
+        const footerHours = document.getElementById("footerHours");
+        if (footerStop) footerStop.textContent = "Location unavailable";
+        if (footerHours) footerHours.textContent = "Check social media";
+      }
+    }
+
+    loadTruckData();
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const signupForm = document.getElementById("signupForm");
+    const joinBtn = document.getElementById("joinBtn");
+    const successMessage = document.getElementById("success");
+
+    signupForm.addEventListener("submit", function () {
+      successMessage.style.display = "none";
+      joinBtn.disabled = true;
+      joinBtn.textContent = "Joining...";
+
+      setTimeout(() => {
+        successMessage.style.display = "block";
+        signupForm.reset();
+        joinBtn.disabled = false;
+        joinBtn.textContent = "Join Now";
+      }, 900);
+    });
+
+    const shareBtn = document.getElementById("shareBtn");
+    const shareMessage = document.getElementById("shareMessage");
+
+    function showShareMessage(text) {
+      shareMessage.textContent = text;
+      shareMessage.style.display = "block";
+
+      setTimeout(() => {
+        shareMessage.style.display = "none";
+      }, 2500);
+    }
+
+    shareBtn.addEventListener("click", async () => {
+      const shareUrl = window.location.href;
+      const shareText = "Pull up to Smoke & Dre Grille. Bring a hungry friend and get 20% off your meal.";
+
+      try {
+        if (navigator.clipboard) {
+          await navigator.clipboard.writeText(shareUrl);
+        }
+
+        if (navigator.share) {
+          await navigator.share({
+            title: "Smoke & Dre Grille",
+            text: shareText,
+            url: shareUrl
+          });
+          showShareMessage("Link copied. Send it to your friend.");
+        } else {
+          showShareMessage("Link copied. Send it to your friend.");
+        }
+      } catch (error) {
+        console.error("Share failed", error);
+
+        try {
+          if (navigator.clipboard) {
+            await navigator.clipboard.writeText(shareUrl);
+            showShareMessage("Link copied. Send it to your friend.");
+          } else {
+            showShareMessage("Copy failed. Please copy the link manually.");
+          }
+        } catch {
+          showShareMessage("Copy failed. Please copy the link manually.");
+        }
+      }
+    });
+  </script>
 </body>
 </html>
