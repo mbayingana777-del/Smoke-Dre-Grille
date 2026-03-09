@@ -899,51 +899,47 @@ signupForm.addEventListener("submit", function () {
 });
 
     const shareBtn = document.getElementById("shareBtn");
-    const shareMessage = document.getElementById("shareMessage");
+const shareMessage = document.getElementById("shareMessage");
 
-    function showShareMessage(text) {
-      shareMessage.textContent = text;
-      shareMessage.style.display = "block";
+function showShareMessage(text) {
+  shareMessage.textContent = text;
+  shareMessage.style.display = "block";
 
-      setTimeout(() => {
-        shareMessage.style.display = "none";
-      }, 2500);
+  setTimeout(() => {
+    shareMessage.style.display = "none";
+  }, 3000);
+}
+
+shareBtn.addEventListener("click", async () => {
+  const shareUrl = window.location.href;
+  const shareText = "Pull up to Smoke & Dre Grille with me and get 20% off your meal when you show up with a hungry friend.";
+  const shareBody = `${shareText} ${shareUrl}`;
+
+  try {
+    if (navigator.share) {
+      await navigator.share({
+        title: "Smoke & Dre Grille",
+        text: shareText,
+        url: shareUrl
+      });
+      showShareMessage("Share ready.");
+      return;
     }
 
-    shareBtn.addEventListener("click", async () => {
-      const shareUrl = window.location.href;
-      const shareText = "Pull up to Smoke & Dre Grille. Bring a hungry friend and get 20% off your meal.";
+    await navigator.clipboard.writeText(shareBody);
+    showShareMessage("Message copied. Send it to your friend.");
+  } catch (error) {
+    console.error("Share failed", error);
 
-      try {
-        if (navigator.clipboard) {
-          await navigator.clipboard.writeText(shareUrl);
-        }
-
-        if (navigator.share) {
-          await navigator.share({
-            title: "Smoke & Dre Grille",
-            text: shareText,
-            url: shareUrl
-          });
-          showShareMessage("Link copied. Send it to your friend.");
-        } else {
-          showShareMessage("Link copied. Send it to your friend.");
-        }
-      } catch (error) {
-        console.error("Share failed", error);
-
-        try {
-          if (navigator.clipboard) {
-            await navigator.clipboard.writeText(shareUrl);
-            showShareMessage("Link copied. Send it to your friend.");
-          } else {
-            showShareMessage("Copy failed. Please copy the link manually.");
-          }
-        } catch {
-          showShareMessage("Copy failed. Please copy the link manually.");
-        }
-      }
-    });
+    try {
+      await navigator.clipboard.writeText(shareBody);
+      showShareMessage("Message copied. Send it to your friend.");
+    } catch (copyError) {
+      console.error("Copy failed", copyError);
+      showShareMessage("Could not copy the message. Please copy the link manually.");
+    }
+  }
+});
   </script>
 </body>
 </html>
