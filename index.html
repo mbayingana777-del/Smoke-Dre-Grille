@@ -658,32 +658,61 @@
   </section>
 
   <section class="section" id="signup">
-    <div class="container">
-      <div class="cta-grid">
-        <article class="card signup-card">
-          <div class="eyebrow" style="margin-bottom:12px">📩 Join the Smoke Crew</div>
-          <h2 class="section-title" style="font-size:38px">Get alerts, specials, and new menu drops.</h2>
-          <p class="section-copy">Build repeat customers with location updates, limited-time offers, and community energy.</p>
+  <div class="container">
+    <div class="cta-grid">
+      <article class="card signup-card">
+        <div class="eyebrow" style="margin-bottom:12px">📩 Join the Smoke Crew</div>
+        <h2 class="section-title" style="font-size:38px">Get alerts, specials, and new menu drops.</h2>
+        <p class="section-copy">Be the first to hear where we’re parked, what’s cooking, and when special deals drop.</p>
 
-          <form class="signup-form" onsubmit="event.preventDefault();document.getElementById('success').style.display='block';">
-            <input type="email" placeholder="Enter your email" aria-label="Email address">
-            <button class="button button-primary" type="submit">Join Now</button>
-          </form>
-          <p id="success" style="display:none;color:var(--success);margin-top:14px">You're in. Smoke Crew gets the first word.</p>
-        </article>
+        <form
+          id="signupForm"
+          class="signup-form"
+          action="YOUR_WEB_APP_URL_HERE"
+          method="POST"
+          target="hidden_iframe"
+        >
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First name"
+            aria-label="First name"
+            required
+          >
+          <input
+            type="email"
+            name="email"
+            placeholder="Email address"
+            aria-label="Email address"
+            required
+          >
+          <button id="joinBtn" class="button button-primary" type="submit">Join Now</button>
+        </form>
 
-        <article class="card referral-card">
-          <div class="eyebrow" style="margin-bottom:12px">🎉 Share with a friend</div>
-          <h2 class="section-title" style="font-size:38px">Bring somebody hungry. Save on the next stop.</h2>
-          <p class="section-copy">Use this section to promote word-of-mouth growth and turn one customer into two.</p>
-          <div class="referral-badge">20% OFF next meal</div>
-          <div style="margin-top:20px">
-            <a class="button button-secondary" href="#">Share & Save</a>
-          </div>
-        </article>
-      </div>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+        <p id="success" style="display:none;color:var(--success);margin-top:14px">
+          You're in. Smoke Crew gets the first word.
+        </p>
+      </article>
+
+      <article class="card referral-card">
+        <div class="eyebrow" style="margin-bottom:12px">🎉 Share with a friend</div>
+        <h2 class="section-title" style="font-size:38px">Bring somebody hungry. Save on the next stop.</h2>
+        <p class="section-copy">Bring a hungry friend with you and get 20% off your meal. Simple.</p>
+        <div class="referral-badge">20% OFF your meal</div>
+
+        <div style="margin-top:20px">
+          <button id="shareBtn" class="button button-secondary" type="button">Share</button>
+        </div>
+
+        <p id="shareMessage" style="display:none;color:var(--success);margin-top:14px">
+          Link copied. Send it to your friend.
+        </p>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
  <script>
 const SHEET_ID = "1_UlglhOM7eLPYSZ8xGadKYEmf0nnjxo9OH3VIVVFpIM";
