@@ -409,11 +409,11 @@
 
     .cta-grid{
       display:grid;
-      grid-template-columns:1fr;
+      grid-template-columns:1fr 1fr;
       gap:22px;
     }
 
-    .referral-card{
+    .signup-card, .referral-card{
       padding:28px;
       position:relative;
       transition:.25s ease;
@@ -466,6 +466,36 @@
 
     .spotlight-overlay.active{
       display:block;
+    }
+
+    .signup-form{
+      margin-top:18px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    input[type="text"],
+    input[type="email"]{
+      flex:1 1 220px;
+      min-height:52px;
+      border-radius:14px;
+      border:1px solid #2d2d2d;
+      background:#0d0d0d;
+      color:var(--text);
+      padding:0 16px;
+      outline:none;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus{
+      border-color:#4e361f;
+      box-shadow:0 0 0 4px rgba(255,138,29,.08);
+    }
+
+    input::placeholder{
+      color:#8f867b;
     }
 
     .referral-badge{
@@ -806,6 +836,47 @@
   <section class="section" id="signup">
     <div class="container">
       <div class="cta-grid">
+        <article id="signupCard" class="card signup-card">
+          <button class="card-spotlight-close" type="button" data-close-spotlight aria-label="Close signup">×</button>
+          <button class="eyebrow-button" type="button" data-open-spotlight="signupCard" style="margin-bottom:12px">📩 Join the Smoke Crew</button>
+          <h2 class="section-title" style="font-size:38px">Get alerts, specials, and new menu drops.</h2>
+          <p class="section-copy">Be the first to hear where we’re parked, what’s cooking, and when special deals drop.</p>
+
+          <form
+            id="signupForm"
+            class="signup-form"
+            action="https://script.google.com/macros/s/AKfycbzcYSOzok09mGN-4u1eG7O1e5zCjxcjBbtySq9hfpPVoE0HPm2YIhjengAFmg4SDV5NeA/exec"
+            method="POST"
+            target="hidden_iframe"
+          >
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First name"
+              aria-label="First name"
+              required
+            >
+            <input
+              type="email"
+              name="email"
+              placeholder="Email address"
+              aria-label="Email address"
+              required
+            >
+            <button id="joinBtn" class="button button-primary" type="submit">Join Now</button>
+          </form>
+
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+          <p id="success" style="display:none;color:var(--success);margin-top:14px">
+            You're in. Smoke Crew gets the first word.
+          </p>
+
+          <p id="signupError" style="display:none;color:var(--danger);margin-top:14px">
+            Something went wrong. Please try again.
+          </p>
+        </article>
+
         <article id="referralCard" class="card referral-card">
           <button class="card-spotlight-close" type="button" data-close-spotlight aria-label="Close share">×</button>
           <button class="eyebrow-button" type="button" data-open-spotlight="referralCard" style="margin-bottom:12px">🎉 Share with a friend</button>
@@ -914,6 +985,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const spotlightOverlay = document.getElementById("spotlightOverlay");
+    const signupCard = document.getElementById("signupCard");
     const referralCard = document.getElementById("referralCard");
 
     function openSpotlight(cardId) {
@@ -926,6 +998,13 @@
       spotlightOverlay.classList.add("active");
       document.body.classList.add("spotlight-active");
 
+      if (cardId === "signupCard") {
+        const firstInput = card.querySelector('input[name="firstName"]');
+        if (firstInput) {
+          setTimeout(() => firstInput.focus(), 250);
+        }
+      }
+
       if (cardId === "referralCard") {
         const shareBtnFocus = card.querySelector("#shareBtn");
         if (shareBtnFocus) {
@@ -935,9 +1014,8 @@
     }
 
     function closeSpotlight() {
-      if (referralCard) {
-        referralCard.classList.remove("spotlight");
-      }
+      signupCard.classList.remove("spotlight");
+      referralCard.classList.remove("spotlight");
       spotlightOverlay.classList.remove("active");
       document.body.classList.remove("spotlight-active");
     }
@@ -963,6 +1041,30 @@
       if (event.key === "Escape") {
         closeSpotlight();
       }
+    });
+
+    const signupForm = document.getElementById("signupForm");
+    const joinBtn = document.getElementById("joinBtn");
+    const successMessage = document.getElementById("success");
+    const signupError = document.getElementById("signupError");
+
+    signupForm.addEventListener("submit", function () {
+      successMessage.style.display = "none";
+      signupError.style.display = "none";
+      joinBtn.disabled = true;
+      joinBtn.textContent = "Joining...";
+
+      setTimeout(() => {
+        signupForm.reset();
+        joinBtn.disabled = false;
+        joinBtn.textContent = "Join Now";
+        successMessage.textContent = "You're in. Smoke Crew gets the first word.";
+        successMessage.style.display = "block";
+
+        setTimeout(() => {
+          closeSpotlight();
+        }, 900);
+      }, 1200);
     });
 
     const shareBtn = document.getElementById("shareBtn");
